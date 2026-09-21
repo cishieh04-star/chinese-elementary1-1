@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
-<title>拍拍找字樂・第一課</title>
-<style>:root{--ink:#333;--blue:#3b82d6;--green:#2fa36b;--gold:#ffc83d;--orange:#ff9a3c;--red:#d9443a}
+<title>拍拍找字樂・第二課</title>
+<style>:root{--ink:#333;--blue:#7b5cd6;--green:#1fa38a;--gold:#ffc83d;--orange:#ff9a3c;--red:#d9443a}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{font-size:clamp(14px,min(3.6vw,2.7vh),26px);height:100%}
 body{margin:0;height:100%;height:100dvh;overflow:hidden;display:flex;flex-direction:column;font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#fff8ec;user-select:none;-webkit-user-select:none;font-size:1.3rem;touch-action:manipulation}
@@ -162,24 +162,26 @@ body.paused *{animation-play-state:paused!important}
 @keyframes shk3{25%{transform:translateX(-.4rem)}75%{transform:translateX(.4rem)}}
 @media (max-width:400px){#ttl{display:none}#top{justify-content:space-between}}
 .zyq{font-size:min(1.15rem,4.2vw)}@media (max-height:400px){.zyq{font-size:.95rem}.zyw{padding:.3rem;gap:.2rem}}
+
+.l2{display:block;font-size:.4em;font-weight:800;color:#7b5cd6;margin-top:.1em;letter-spacing:.2em}
 </style></head><body>
 <div id="top"><button class="tb" id="homeBtn" style="display:none" >回首頁</button><h1 id="ttl"></h1><span class="chip" id="pts">點數 0</span><button class="tb" id="zyBtn">關閉注音</button><button class="tb" id="voiceBtn">關閉聲音</button></div>
 <div id="main"></div>
 <div id="foot"></div>
 <div id="toast"></div>
 <script>
-const ZYC={"戲": "ㄒㄧˋ", "邊": "ㄅㄧㄢ", "我": "ㄨㄛˇ", "喝": "ㄏㄜ", "還": "ㄏㄞˊ", "這": "ㄓㄜˋ", "聲": "ㄕㄥ", "也": "ㄧㄝˇ", "鼠": "ㄕㄨˇ", "寫": "ㄒㄧㄝˇ", "梯": "ㄊㄧ", "聽": "ㄊㄧㄥ", "箭": "ㄐㄧㄢˋ", "九": "ㄐㄧㄡˇ", "要": "ㄧㄠˋ", "溜": "ㄌㄧㄡ", "姐": "ㄐㄧㄝˇ", "新": "ㄒㄧㄣ", "拿": "ㄋㄚˊ", "到": "ㄉㄠˋ", "球": "ㄑㄧㄡˊ", "通": "ㄊㄨㄥ", "的": "ㄉㄜ˙", "弟": "ㄉㄧˋ", "普": "ㄆㄨˇ", "關": "ㄍㄨㄢ", "草": "ㄘㄠˇ", "特": "ㄊㄜˋ", "字": "ㄗˋ", "每": "ㄇㄟˇ", "子": "ㄗ˙", "歌": "ㄍㄜ", "度": "ㄉㄨˋ", "能": "ㄋㄥˊ", "星": "ㄒㄧㄥ", "頁": "ㄧㄝˋ", "門": "ㄇㄣˊ", "換": "ㄏㄨㄢˋ", "喔": "ㄛ", "顆": "ㄎㄜ", "習": "ㄒㄧˊ", "生": "ㄕㄥ", "繼": "ㄐㄧˋ", "照": "ㄓㄠˋ", "是": "ㄕˋ", "四": "ㄙˋ", "找": "ㄓㄠˇ", "停": "ㄊㄧㄥˊ", "先": "ㄒㄧㄢ", "課": "ㄎㄜˋ", "魚": "ㄩˊ", "日": "ㄖˋ", "們": "ㄇㄣ˙", "有": "ㄧㄡˇ", "可": "ㄎㄜˇ", "得": "ㄉㄜ˙", "個": "ㄍㄜ˙", "晚": "ㄨㄢˇ", "數": "ㄕㄨˋ", "三": "ㄙㄢ", "中": "ㄓㄨㄥ", "共": "ㄍㄨㄥˋ", "吃": "ㄔ", "資": "ㄗ", "最": "ㄗㄨㄟˋ", "發": "ㄈㄚ", "點": "ㄉㄧㄢˇ", "工": "ㄍㄨㄥ", "品": "ㄆㄧㄣˇ", "家": "ㄐㄧㄚ", "文": "ㄨㄣˊ", "士": "ㄕˋ", "左": "ㄗㄨㄛˇ", "早": "ㄗㄠˇ", "水": "ㄕㄨㄟˇ", "師": "ㄕ", "出": "ㄔㄨ", "龍": "ㄌㄨㄥˊ", "練": "ㄌㄧㄢˋ", "開": "ㄎㄞ", "玩": "ㄨㄢˊ", "手": "ㄕㄡˇ", "回": "ㄏㄨㄟˊ", "二": "ㄦˋ", "時": "ㄕˊ", "往": "ㄨㄤˇ", "許": "ㄒㄩˇ", "六": "ㄌㄧㄡˋ", "腿": "ㄊㄨㄟˇ", "首": "ㄕㄡˇ", "讓": "ㄖㄤˋ", "老": "ㄌㄠˇ", "面": "ㄇㄧㄢˋ", "他": "ㄊㄚ", "果": "ㄍㄨㄛˇ", "那": "ㄋㄚˋ", "傘": "ㄙㄢˇ", "啊": "ㄚ", "滑": "ㄏㄨㄚˊ", "妹": "ㄇㄟˋ", "動": "ㄉㄨㄥˋ", "就": "ㄐㄧㄡˋ", "組": "ㄗㄨˇ", "火": "ㄏㄨㄛˇ", "都": "ㄉㄡ", "說": "ㄕㄨㄛ", "再": "ㄗㄞˋ", "小": "ㄒㄧㄠˇ", "不": "ㄅㄨˋ", "掉": "ㄉㄧㄠˋ", "功": "ㄍㄨㄥ", "樂": "ㄌㄜˋ", "氣": "ㄑㄧˋ", "拍": "ㄆㄞ", "機": "ㄐㄧ", "了": "ㄌㄜ˙", "效": "ㄒㄧㄠˋ", "樣": "ㄧㄤˋ", "一": "ㄧ", "她": "ㄊㄚ", "烏": "ㄨ", "你": "ㄋㄧˇ", "在": "ㄗㄞˋ", "馬": "ㄇㄚˇ", "太": "ㄊㄞˋ", "怪": "ㄍㄨㄞˋ", "和": "ㄏㄜˊ", "速": "ㄙㄨˋ", "上": "ㄕㄤˋ", "好": "ㄏㄠˇ", "與": "ㄩˇ", "卡": "ㄎㄚˇ", "閉": "ㄅㄧˋ", "部": "ㄅㄨˋ", "七": "ㄑㄧ", "下": "ㄒㄧㄚˋ", "鳥": "ㄋㄧㄠˇ", "音": "ㄧㄣ", "注": "ㄓㄨˋ", "它": "ㄊㄚ", "第": "ㄉㄧˋ", "明": "ㄇㄧㄥˊ", "右": "ㄧㄡˋ", "誰": "ㄕㄟˊ", "打": "ㄉㄚˇ", "全": "ㄑㄩㄢˊ", "次": "ㄘˋ", "地": "ㄉㄧˋ", "鍵": "ㄐㄧㄢˋ", "車": "ㄔㄜ", "看": "ㄎㄢˋ", "定": "ㄉㄧㄥˋ", "續": "ㄒㄩˋ", "摸": "ㄇㄛ", "鵝": "ㄜˊ", "天": "ㄊㄧㄢ", "大": "ㄉㄚˋ", "語": "ㄩˇ", "正": "ㄓㄥˋ", "十": "ㄕˊ", "哥": "ㄍㄜ", "五": "ㄨˇ", "棒": "ㄅㄤˋ", "始": "ㄕˇ", "八": "ㄅㄚ", "快": "ㄎㄨㄞˋ", "慢": "ㄇㄢˋ", "雞": "ㄐㄧ", "用": "ㄧㄥˋ", "遊": "ㄧㄡˊ", "少": "ㄕㄠˇ", "裡": "ㄌㄧˇ", "隨": "ㄙㄨㄟˊ", "牛": "ㄋㄧㄡˊ"};
+const ZYC={"我": "ㄨㄛˇ", "火": "ㄏㄨㄛˇ", "好": "ㄏㄠˇ", "關": "ㄍㄨㄢ", "資": "ㄗ", "太": "ㄊㄞˋ", "怪": "ㄍㄨㄞˋ", "與": "ㄩˇ", "龍": "ㄌㄨㄥˊ", "遊": "ㄧㄡˊ", "停": "ㄊㄧㄥˊ", "雞": "ㄐㄧ", "來": "ㄌㄞˊ", "看": "ㄎㄢˋ", "不": "ㄅㄨˋ", "王": "ㄨㄤˊ", "過": "ㄍㄨㄛˋ", "成": "ㄔㄥˊ", "數": "ㄕㄨˋ", "馬": "ㄇㄚˇ", "掉": "ㄉㄧㄠˋ", "喔": "ㄛ", "那": "ㄋㄚˋ", "八": "ㄅㄚ", "手": "ㄕㄡˇ", "樣": "ㄧㄤˋ", "速": "ㄙㄨˋ", "發": "ㄈㄚ", "得": "ㄉㄜ˙", "五": "ㄨˇ", "樂": "ㄌㄜˋ", "都": "ㄉㄡ", "最": "ㄗㄨㄟˋ", "有": "ㄧㄡˇ", "名": "ㄇㄧㄥˊ", "六": "ㄌㄧㄡˋ", "四": "ㄙˋ", "要": "ㄧㄠˋ", "點": "ㄉㄧㄢˇ", "說": "ㄕㄨㄛ", "機": "ㄐㄧ", "分": "ㄈㄣ", "練": "ㄌㄧㄢˋ", "拿": "ㄋㄚˊ", "啊": "ㄚ", "姐": "ㄐㄧㄝˇ", "繼": "ㄐㄧˋ", "起": "ㄑㄧˇ", "鼠": "ㄕㄨˇ", "中": "ㄓㄨㄥ", "語": "ㄩˇ", "新": "ㄒㄧㄣ", "卡": "ㄎㄚˇ", "大": "ㄉㄚˋ", "玩": "ㄨㄢˊ", "聽": "ㄊㄧㄥ", "裡": "ㄌㄧˇ", "日": "ㄖˋ", "第": "ㄉㄧˋ", "慢": "ㄇㄢˋ", "烏": "ㄨ", "吃": "ㄔ", "天": "ㄊㄧㄢ", "動": "ㄉㄨㄥˋ", "先": "ㄒㄧㄢ", "聲": "ㄕㄥ", "九": "ㄐㄧㄡˇ", "傘": "ㄙㄢˇ", "自": "ㄗˋ", "你": "ㄋㄧˇ", "箭": "ㄐㄧㄢˋ", "享": "ㄒㄧㄤˇ", "國": "ㄍㄨㄛˊ", "二": "ㄦˋ", "鍵": "ㄐㄧㄢˋ", "下": "ㄒㄧㄚˋ", "地": "ㄉㄧˋ", "們": "ㄇㄣ˙", "了": "ㄌㄜ˙", "老": "ㄌㄠˇ", "出": "ㄔㄨ", "換": "ㄏㄨㄢˋ", "始": "ㄕˇ", "歌": "ㄍㄜ", "子": "ㄗ˙", "越": "ㄩㄝˋ", "家": "ㄐㄧㄚ", "回": "ㄏㄨㄟˊ", "續": "ㄒㄩˋ", "多": "ㄉㄨㄛ", "部": "ㄅㄨˋ", "明": "ㄇㄧㄥˊ", "車": "ㄔㄜ", "特": "ㄊㄜˋ", "到": "ㄉㄠˋ", "開": "ㄎㄞ", "友": "ㄧㄡˇ", "早": "ㄗㄠˇ", "上": "ㄕㄤˋ", "隨": "ㄙㄨㄟˊ", "是": "ㄕˋ", "象": "ㄒㄧㄤˋ", "效": "ㄒㄧㄠˋ", "字": "ㄗˋ", "摸": "ㄇㄛ", "次": "ㄘˋ", "全": "ㄑㄩㄢˊ", "頁": "ㄧㄝˋ", "目": "ㄇㄨˋ", "氣": "ㄑㄧˋ", "也": "ㄧㄝˇ", "能": "ㄋㄥˊ", "用": "ㄧㄥˋ", "正": "ㄓㄥˋ", "普": "ㄆㄨˇ", "度": "ㄉㄨˋ", "還": "ㄏㄞˊ", "嗎": "ㄇㄚ˙", "右": "ㄧㄡˋ", "喝": "ㄏㄜ", "鵝": "ㄜˊ", "拍": "ㄆㄞ", "一": "ㄧ", "讓": "ㄖㄤˋ", "注": "ㄓㄨˋ", "往": "ㄨㄤˇ", "三": "ㄙㄢ", "面": "ㄇㄧㄢˋ", "十": "ㄕˊ", "課": "ㄎㄜˋ", "每": "ㄇㄟˇ", "通": "ㄊㄨㄥ", "就": "ㄐㄧㄡˋ", "的": "ㄉㄜ˙", "棒": "ㄅㄤˋ", "戲": "ㄒㄧˋ", "打": "ㄉㄚˇ", "閉": "ㄅㄧˋ", "魚": "ㄩˊ", "球": "ㄑㄧㄡˊ", "七": "ㄑㄧ", "品": "ㄆㄧㄣˇ", "定": "ㄉㄧㄥˋ", "個": "ㄍㄜ˙", "找": "ㄓㄠˇ", "超": "ㄔㄠ", "和": "ㄏㄜˊ", "時": "ㄕˊ", "快": "ㄎㄨㄞˋ", "再": "ㄗㄞˋ", "習": "ㄒㄧˊ", "反": "ㄈㄢˇ", "音": "ㄧㄣ", "生": "ㄕㄥ", "首": "ㄕㄡˇ", "師": "ㄕ", "共": "ㄍㄨㄥˋ", "星": "ㄒㄧㄥ", "這": "ㄓㄜˋ"};
 'use strict';
 const $=s=>document.querySelector(s);
 const rnd=n=>Math.floor(Math.random()*n);
 const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(i+1);[a[i],a[j]]=[a[j],a[i]]}return a};
 const one=a=>a[rnd(a.length)];
-const KEY='paipai-find-v1';
+const KEY='paipai-find-l2-v1';
 let S={c:{},h:{},mode:'all',grp:0,goal:5,spd:1,pts:0,clr:0,prz:0};
 try{const r=localStorage.getItem(KEY);if(r)S=Object.assign(S,JSON.parse(r))}catch(e){}
 if(!['all','chute','bal','mon','arch','whack','truck','dino','train','fish','zy'].includes(S.mode))S.mode='all';if(!(S.spd>=0&&S.spd<=4))S.spd=1;if(![3,5,8].includes(S.goal))S.goal=5;if(!(S.pts>=0))S.pts=0;if(!(S.clr>=0))S.clr=0;if(!(S.prz>=0))S.prz=0;if(!S.c||typeof S.c!=='object')S.c={};if(!S.h||typeof S.h!=='object')S.h={};S.pts=0;S.clr=0;S.prz=0;
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}};
-function Z(t,force){return [...String(t)].map(c=>{const inner=c==='拍'?`<span style="color:#d9443a">${c}</span>`:c;const z=ZYC[c];if(!z||force===false)return inner;const zz=z.replace('˙','')+(z.includes('˙')?'˙':'');return `<span class="zc">${inner}<span class="zy">${zz}</span></span>`}).join('')}
+function Z(t,force){return [...String(t)].map(c=>{const inner=false?`<span style="color:#d9443a">${c}</span>`:c;const z=ZYC[c];if(!z||force===false)return inner;const zz=z.replace('˙','')+(z.includes('˙')?'˙':'');return `<span class="zc">${inner}<span class="zy">${zz}</span></span>`}).join('')}
 let voiceOn=true,AC=null;
 function getAC(){if(!AC)AC=new(window.AudioContext||window.webkitAudioContext)();if(AC.state!=='running'&&AC.resume)AC.resume();return AC}
 function beep(f,d,delay=0,type='sine',v=.13){try{getAC();const o=AC.createOscillator(),g=AC.createGain();o.type=type;o.frequency.value=f;g.gain.setValueAtTime(v,AC.currentTime+delay);g.gain.exponentialRampToValueAtTime(.001,AC.currentTime+delay+d);o.connect(g);g.connect(AC.destination);o.start(AC.currentTime+delay);o.stop(AC.currentTime+delay+d+.02)}catch(e){}}
@@ -200,14 +202,12 @@ function clearAll(){PAUSED=false;document.body.classList.remove('paused');const 
 
 /* ===== 生字 ===== */
 const CH={
-拍:['👏','拍手'],手:['👏','拍手'],左:['👈','左邊'],右:['👉','右邊'],上:['⬆️','上面'],下:['⬇️','下面'],你:['👋','你好'],好:['👋','你好'],也:['🤔','也許'],他:['👬','他們'],是:['✅','就是'],們:['👬','他們'],
-球:['⚽','拍球'],打:['🥁','拍打'],照:['📷','拍照'],妹:['👧','妹妹'],姐:['👩','姐姐'],弟:['👦','弟弟'],哥:['🧒','哥哥'],溜:['🛝','溜滑梯'],滑:['🛝','溜滑梯'],梯:['🛝','溜滑梯'],寫:['✍️','寫功課'],功:['📚','功課'],課:['📚','功課'],
-大:['👨‍👩‍👧‍👦','大家'],小:['🐤','小鳥'],早:['🌅','早上'],晚:['🌙','晚上'],慢:['🐢','慢慢'],腿:['🦵','大腿'],誰:['❓','誰']};
-const GR=[{n:'生字',cs:[...'拍手左右上下你好也他是們']},{n:'課文',cs:[...'球打照妹姐弟哥溜滑梯寫功課']},{n:'練習',cs:[...'大小早晚慢腿誰']}];
-CH['右']=['👉','右邊'];
+這:['👉','這個'],是:['✅','就是'],我:['🙋','我們'],的:['🎁','我的'],好:['👍','好友'],友:['🤝','好友'],啊:['😮','啊'],多:['🍬','好多'],分:['🍰','分享'],了:['🎉','太好了'],一:['☝️','一個'],個:['🧸','一個'],
+目:['👀','目的'],家:['🏠','回家'],太:['🌞','太好了'],不:['🙅','不要'],起:['🧗','起來'],子:['👑','王子']};
+const GR=[{n:'生字',cs:[...'這是我的好友啊多分了一個']},{n:'練習',cs:[...'目家太不起子']}];
 const ALL=GR.flatMap(g=>g.cs);
-const SIM=[[...'左右'],[...'上下'],[...'你他也好'],[...'拍打手'],[...'妹姐弟哥'],[...'溜滑梯'],[...'寫功課'],[...'大小'],[...'早晚'],[...'們是'],[...'慢腿照球']];
-const CONF={拍:'怕伯柏抬拆',手:'毛牛千半',左:'右石古在',右:'左石古有',上:'下士土止',下:'上卡不',你:'妳他您',好:'女如子',也:'他地池她',他:'她也它你',是:'足正日早',們:'門問聞',球:'求救珠',打:'拍扔扛丁',照:'熙煮熱昭',妹:'姐末味妝',姐:'組祖租姊',弟:'第梯剃',哥:'歌可何',溜:'留流榴',滑:'骨猾',梯:'弟第剃',寫:'瀉家寬',功:'攻工切',課:'果顆棵誰',大:'太犬天夫',小:'少水川',早:'旱草日旦',晚:'免挽脫曉',慢:'漫曼慌慣',腿:'退褪服',誰:'推唯雖課'};
+const SIM=[[...'這過遠'],[...'我找'],[...'好子'],[...'友太'],[...'多分'],[...'了子'],[...'一個'],[...'目日'],[...'太不'],[...'是目']];
+const CONF={這:'過遠追道週',是:'足正日早提',我:'找戒成哉',的:'釣約勺豹',好:'如女子姐',友:'反右有太',啊:'阿呵吶嗎',多:'夕名夠外',分:'兮粉份貧',了:'子孑丁予',一:'二三十土',個:'固國們箇',目:'日自且白',家:'冢象豪嫁',太:'大犬夫天',不:'木下丕才',起:'赳越超趕',子:'字孑了孔'};
 const confOf=c=>[...new Set([...(CONF[c]||''),...simOf(c),...ALL.filter(x=>CONF[x]&&CONF[x].includes(c))])].filter(x=>x!==c);
 const simOf=c=>{const g=SIM.find(x=>x.includes(c));return g?g.filter(x=>x!==c):[]};
 const FONTS=['"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif','"DFKai-SB","BiauKai","Kaiti TC","KaiTi","標楷體",serif','"Noto Serif TC","PMingLiU","Songti TC",serif','"Noto Sans TC","PingFang TC",sans-serif;font-weight:400'];
@@ -240,7 +240,7 @@ function settings(){clearAll();$('#homeBtn').style.display='';
   chipUpd();setFoot([{h:'回首頁',c:'o',f:home}])}
 const RULE='看上面的字，找到一樣的字，點一下，就有星星和獎品喔！';
 function home(){clearAll();$('#homeBtn').style.display='none';chipUpd();
-  main.innerHTML=`<div class="home2"><div class="logo">${Z('拍拍找字樂',false)}</div><div class="demo"><div class="d1"><div class="dl">${Z('看這個字')}</div><div class="dt">${Z('拍',true)}</div></div><div class="dar">找一樣的字</div><div class="d2"><div class="dc">左</div><div class="dc hi">拍<i>點這裡</i></div><div class="dc">打</div></div><div class="dl2">${Z('找到一樣的字，點一下！')}</div><div class="d3">${Z('太棒了！')} 得到星星和獎品</div></div><button class="opt" id="rsay">聽說明</button></div>`;
+  main.innerHTML=`<div class="home2"><div class="logo">${Z('拍拍找字樂',false)}<small class="l2">第二課</small></div><div class="demo"><div class="d1"><div class="dl">${Z('看這個字')}</div><div class="dt">${Z('這',true)}</div></div><div class="dar">找一樣的字</div><div class="d2"><div class="dc">過</div><div class="dc hi">這<i>點這裡</i></div><div class="dc">道</div></div><div class="dl2">${Z('找到一樣的字，點一下！')}</div><div class="d3">${Z('太棒了！')} 得到星星和獎品</div></div><button class="opt" id="rsay">聽說明</button></div>`;
   $('#rsay').onclick=()=>say(RULE);
   later(()=>say(RULE),600);
   setFoot([{h:'開始玩',c:'o big',f:auto},{h:'我的獎品',c:'w',f:prizeScreen},{h:'設定',c:'w',f:settings}])}
